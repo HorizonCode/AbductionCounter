@@ -12,6 +12,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
+/**
+ * This class was created by HorizonCode 
+ * Create Date: 18.09.2017 / 21:15
+ * Project: AbductionCounter
+ */
+
 public class AbductionCounterController {
 
 	@FXML // ResourceBundle that was given to the FXMLLoader

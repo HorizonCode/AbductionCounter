@@ -11,6 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This class was created by HorizonCode 
+ * Create Date: 18.09.2017 / 21:13 
+ * Project: AbductionCounter
+ */
 public class AbductionCounter extends Application {
 
 	public Scene scene;
