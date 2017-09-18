@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.131" fx:controller="net.horizoncode.ac.AbductionCounterController">
+   <children>
+      <Pane prefHeight="290.0" prefWidth="587.0">
+         <children>
+            <JFXProgressBar fx:id="progressBar" layoutX="12.0" layoutY="268.0" prefHeight="1.0" prefWidth="567.0" progress="0.0" />
+            <Text fx:id="abductionpossibleText" layoutX="14.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abduction not possible yet." />
+            <Text fx:id="runsCount" layoutX="550.0" layoutY="260.0" strokeWidth="0.0" text="0/15" textAlignment="JUSTIFY" />
+            <JFXButton fx:id="clearedRunsButton" alignment="CENTER" buttonType="RAISED" cacheShape="false" centerShape="false" contentDisplay="CENTER" focusTraversable="false" layoutX="446.0" layoutY="42.0" prefHeight="39.0" prefWidth="69.0" scaleShape="false" style="-fx-background-color: #18c7f7;" text="+1" textFill="WHITE" />
+            <JFXButton fx:id="clearedAbductionsButton" alignment="CENTER" buttonType="RAISED" cacheShape="false" centerShape="false" contentDisplay="CENTER" focusTraversable="false" layoutX="446.0" layoutY="98.0" prefHeight="39.0" prefWidth="69.0" scaleShape="false" style="-fx-background-color: #18c7f7;" text="+1" textFill="WHITE" />
+            <JFXButton fx:id="clearedXHAbductionsButton" alignment="CENTER" buttonType="RAISED" cacheShape="false" centerShape="false" contentDisplay="CENTER" focusTraversable="false" layoutX="446.0" layoutY="152.0" prefHeight="39.0" prefWidth="69.0" scaleShape="false" style="-fx-background-color: #18c7f7;" text="+1" textFill="WHITE" />
+            <Text fx:id="clearedRuns" layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cleared Runs this Set:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Line endX="400.0" layoutX="159.0" layoutY="90.0" startX="-150.0" />
+            <Line endX="400.0" layoutX="159.0" layoutY="145.0" startX="-150.0" />
+            <JFXButton buttonType="RAISED" cacheShape="false" centerShape="false" disable="true" focusTraversable="false" layoutX="525.0" layoutY="42.0" prefHeight="39.0" prefWidth="46.0" scaleShape="false" style="-fx-background-color: #e59319;" text="Set" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" cacheShape="false" centerShape="false" disable="true" focusTraversable="false" layoutX="525.0" layoutY="98.0" prefHeight="39.0" prefWidth="46.0" scaleShape="false" style="-fx-background-color: #e59319;" text="Set" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" cacheShape="false" centerShape="false" disable="true" focusTraversable="false" layoutX="525.0" layoutY="152.0" prefHeight="39.0" prefWidth="46.0" scaleShape="false" style="-fx-background-color: #e59319;" text="Set" textFill="WHITE" />
+            <Text fx:id="clearedAbductions" layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cleared Abductions:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="clearedXHAbductions" layoutX="14.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cleared XH Abductions:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
