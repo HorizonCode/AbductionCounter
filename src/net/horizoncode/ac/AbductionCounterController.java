@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 /**
@@ -19,7 +20,12 @@ import javafx.scene.text.Text;
  */
 
 public class AbductionCounterController {
+	
+	public static AbductionCounterController controllerInstance;
 
+	@FXML // fx:id="stackPane"
+	private StackPane stackPane;
+	
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
 
@@ -43,6 +49,9 @@ public class AbductionCounterController {
 
 	@FXML // fx:id="clearedXHAbductionsButton"
 	private JFXButton clearedXHAbductionsButton; // Value injected by FXMLLoader
+	
+	@FXML // fx:id="resetButton"
+	private JFXButton resetButton; // Value injected by FXMLLoader
 
 	@FXML // fx:id="clearedRuns"
 	private Text clearedRuns; // Value injected by FXMLLoader
@@ -55,6 +64,7 @@ public class AbductionCounterController {
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
+		controllerInstance = this;
 		assert progressBar != null : "fx:id=\"progressBar\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert abductionpossibleText != null : "fx:id=\"abductionpossibleText\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert runsCount != null : "fx:id=\"runsCount\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
@@ -102,6 +112,14 @@ public class AbductionCounterController {
 						int currentXHAbductions = getClearedXHAbductions() + 1;
 						AbductionCounter.config.set(AbductionCounter.clearedXHAbductions, currentXHAbductions);
 						updateText();
+					}
+				});
+				
+				resetButton.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						RenderUtils.renderExitDialog(stackPane, "Reset AbductionCount", "Are you sure?");
 					}
 				});
 
