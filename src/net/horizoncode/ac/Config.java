@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * This class was created by HorizonCode 
+ * This Class was created by HorizonCode 
  * Create Date: 18.09.2017 / 21:19 
  * Project: AbductionCounter
  */

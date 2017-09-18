@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
 /**
- * This class was created by HorizonCode 
+ * This Class was created by HorizonCode 
  * Create Date: 18.09.2017 / 21:15
  * Project: AbductionCounter
  */
