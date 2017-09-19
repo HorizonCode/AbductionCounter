@@ -79,7 +79,7 @@ public class AbductionCounterController {
 		assert clearedXHAbductions != null : "fx:id=\"clearedXHAbductions\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert resetButton != null : "fx:id=\"resetButton\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert totalRuns != null : "fx:id=\"totalRuns\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
-
+		
 		new Thread() {
 			public void run() {
 				try {
@@ -149,10 +149,12 @@ public class AbductionCounterController {
 
 				float percent = (getClearedRuns() * 100.0f) / 15;
 				System.out.println(percent / 100.0f);
-				progressBar.setProgress(percent / 100.0f);
+				
 				if (getClearedRuns() >= 15) {
 					abductionpossibleText.setText("A abduction is usually now possible!");
+					progressBar.setProgress(-1);
 				} else {
+					progressBar.setProgress(percent / 100.0f);
 					abductionpossibleText.setText("A abduction is USUALLY NOT possible at the moment!");
 				}
 

@@ -9,6 +9,7 @@ import org.apache.commons.lang3.SystemUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -60,6 +61,7 @@ public class AbductionCounter extends Application {
 		scene = new Scene(fxmlLoader.load());
 		stage = new Stage();
 		stage.setTitle("AbductionCounter");
+		stage.getIcons().add(new Image("/assets/icon.png"));
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.show();
