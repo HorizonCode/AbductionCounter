@@ -22,7 +22,8 @@ public class AbductionCounter extends Application {
 	public Stage stage;
 
 	public static Config config;
-
+	
+	public static String totalRuns = "total-runs";
 	public static String clearedRuns = "cleared-runs";
 	public static String clearedAbductions = "cleared-abductions";
 	public static String clearedXHAbductions = "cleared-xhabductions";
@@ -41,6 +42,10 @@ public class AbductionCounter extends Application {
 		File configFile = new File(directory, "data.cfg");
 		config = Config.loadConfig(configFile);
 
+		if (!config.isSet(totalRuns))
+			config.set(totalRuns, 0);
+
+		
 		if (!config.isSet(clearedRuns))
 			config.set(clearedRuns, 0);
 

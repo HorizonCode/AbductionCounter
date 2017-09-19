@@ -14,18 +14,17 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 /**
- * This Class was created by HorizonCode 
- * Create Date: 18.09.2017 / 21:15
+ * This Class was created by HorizonCode Create Date: 18.09.2017 / 21:15
  * Project: AbductionCounter
  */
 
 public class AbductionCounterController {
-	
+
 	public static AbductionCounterController controllerInstance;
 
 	@FXML // fx:id="stackPane"
 	private StackPane stackPane;
-	
+
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
 
@@ -49,7 +48,7 @@ public class AbductionCounterController {
 
 	@FXML // fx:id="clearedXHAbductionsButton"
 	private JFXButton clearedXHAbductionsButton; // Value injected by FXMLLoader
-	
+
 	@FXML // fx:id="resetButton"
 	private JFXButton resetButton; // Value injected by FXMLLoader
 
@@ -62,9 +61,13 @@ public class AbductionCounterController {
 	@FXML // fx:id="clearedXHAbductions"
 	private Text clearedXHAbductions; // Value injected by FXMLLoader
 
+	@FXML // fx:id="totalRuns"
+	private Text totalRuns; // Value injected by FXMLLoader
+
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
 		controllerInstance = this;
+		assert stackPane != null : "fx:id=\"stackPane\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert progressBar != null : "fx:id=\"progressBar\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert abductionpossibleText != null : "fx:id=\"abductionpossibleText\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert runsCount != null : "fx:id=\"runsCount\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
@@ -74,6 +77,9 @@ public class AbductionCounterController {
 		assert clearedRuns != null : "fx:id=\"clearedRuns\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert clearedAbductions != null : "fx:id=\"clearedAbductions\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
 		assert clearedXHAbductions != null : "fx:id=\"clearedXHAbductions\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
+		assert resetButton != null : "fx:id=\"resetButton\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
+		assert totalRuns != null : "fx:id=\"totalRuns\" was not injected: check your FXML file 'AbductionCounterScene.fxml'.";
+
 		new Thread() {
 			public void run() {
 				try {
@@ -89,6 +95,9 @@ public class AbductionCounterController {
 					public void handle(ActionEvent event) {
 						int currentRunsUpdated = getClearedRuns() + 1;
 						AbductionCounter.config.set(AbductionCounter.clearedRuns, currentRunsUpdated);
+						
+						int totalRunsUpdated = getTotalRuns() + 1;
+						AbductionCounter.config.set(AbductionCounter.totalRuns, totalRunsUpdated);
 						updateText();
 					}
 				});
@@ -102,7 +111,7 @@ public class AbductionCounterController {
 						updateText();
 					}
 				});
-				
+
 				clearedXHAbductionsButton.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
@@ -114,9 +123,9 @@ public class AbductionCounterController {
 						updateText();
 					}
 				});
-				
+
 				resetButton.setOnAction(new EventHandler<ActionEvent>() {
-					
+
 					@Override
 					public void handle(ActionEvent event) {
 						RenderUtils.renderExitDialog(stackPane, "Reset AbductionCount", "Are you sure?");
@@ -135,7 +144,7 @@ public class AbductionCounterController {
 				clearedRuns.setText("Cleared Runs this Set: " + getClearedRuns());
 				clearedAbductions.setText("Cleared Abductions: " + getClearedAbductions());
 				clearedXHAbductions.setText("Cleared XH Abductions: " + getClearedXHAbductions());
-
+				totalRuns.setText("Total Runs: " + getTotalRuns());
 				runsCount.setText(getClearedRuns() + "/15");
 
 				float percent = (getClearedRuns() * 100.0f) / 15;
@@ -146,10 +155,21 @@ public class AbductionCounterController {
 				} else {
 					abductionpossibleText.setText("A abduction is USUALLY NOT possible at the moment!");
 				}
-				
+
 				AbductionCounter.config.saveConfig();
 			}
 		});
+	}
+
+	public int getTotalRuns() {
+		int currentRuns = 0;
+		if (AbductionCounter.config.get(AbductionCounter.totalRuns) instanceof String) {
+			currentRuns = Integer.parseInt((String) AbductionCounter.config.get(AbductionCounter.totalRuns));
+		}
+		if (AbductionCounter.config.get(AbductionCounter.totalRuns) instanceof Integer) {
+			currentRuns = (int) AbductionCounter.config.get(AbductionCounter.totalRuns);
+		}
+		return currentRuns;
 	}
 
 	public int getClearedRuns() {
