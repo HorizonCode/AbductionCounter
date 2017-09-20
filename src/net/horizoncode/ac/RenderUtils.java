@@ -46,7 +46,9 @@ public class RenderUtils {
 				AbductionCounter.config.set(AbductionCounter.clearedRuns, 0);
 				AbductionCounter.config.set(AbductionCounter.clearedAbductions, 0);
 				AbductionCounter.config.set(AbductionCounter.clearedXHAbductions, 0);
+				AbductionCounter.config.set(AbductionCounter.totalRuns, 0);
 				AbductionCounterController.controllerInstance.updateText();
+				dialog.close();
 			}
 		});
     	actions.add(closeButton);
